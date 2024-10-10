@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Cart</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="assets/css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="icomoon/icomoon.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/vendor.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <link rel="stylesheet" href="assets/css/notification.css">
+
+        <script src="https://cdn.tailwindcss.com"></script>
+
+
+    </head>
+    <body onload="loadCartItems(); checkSession();" >
+
+        <div id="header-wrap">
+            <div class="top-content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="social-links">
+                                <ul>
+                                    <li>
+                                        <a href="#"><i class="icon icon-facebook"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon icon-twitter"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon icon-youtube-play"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><i class="icon icon-behance-square"></i></a>
+                                    </li>
+                                </ul>
+                            </div><!--social-links-->
+                        </div>
+                        <div class="col-md-6">
+                            <div class="right-element">
+                                <!--sign in-->
+                                <a id="sign-a" href="#" class="user-account for-buy"><ion-icon id="sign-in-icon" name="log-in-outline"></ion-icon><span id="sign-in-span">Sign In</span></a>
+                                
+                                <a id="account" href="#" class="user-account for-buy"><i class="icon icon-user"></i><span>Account</span></a>
+
+                                <a href="cart.html" class="cart for-buy"><i class="icon icon-clipboard"></i><span>Cart</span></a>
+
+                                <div class="action-menu">
+                                    <div class="search-bar">
+                                        <a href="search.html" class="search-button">
+                                            <i class="icon icon-search"></i>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div><!--top-right-->
+                        </div>
+
+                    </div>
+                </div>
+            </div><!--top-content-->
+
+            <header id="header">
+                <div class="container-fluid">
+                    <div class="row">
+
+                        <div class="col-md-2">
+                            <div class="main-logo">
+                                <a href="index.html"><img src="assets/images/main-logo.png" alt="logo"></a>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-10">
+
+                            <nav id="navbar">
+                                <div class="main-menu stellarnav">
+                                    <ul class="menu-list">
+                                        <li class="menu-item active"><a href="index.html">Home</a></li>
+                                        <li class="menu-item has-sub">
+                                            <a href="#pages" class="nav-link">Pages</a>
+
+                                            <ul
+                                                <li class="active"><a href="index.html">Home</a></li>
+                                                <li><a href="about.html">About <span class="badge bg-dark">PRO</span></a></li>
+                                                <li><a href="styles.html">Styles <span class="badge bg-dark">PRO</span></a></li>
+                                                <li><a href="blog.html">Blog <span class="badge bg-dark">PRO</span></a></li>
+                                                <li><a href="single-post.html">Post Single <span class="badge bg-dark">PRO</span></a></li>
+                                                <li><a href="shop.html">Our Store <span class="badge bg-dark">PRO</span></a></li>
+                                                <li><a href="single-product.html">Product Single <span class="badge bg-dark">PRO</span></a></li>
+                                                <li><a href="contact.html">Contact <span class="badge bg-dark">PRO</span></a></li>
+                                                <li><a href="thank-you.html">Thank You <span class="badge bg-dark">PRO</span></a></li>
+                                            </ul>
+
+                                        </li>
+                                        <li class="menu-item"><a href="#featured-books" class="nav-link">Featured</a></li>
+                                        <li class="menu-item"><a href="#popular-books" class="nav-link">Popular</a></li>
+                                        <li class="menu-item"><a href="#special-offer" class="nav-link">Offer</a></li>
+                                        <li class="menu-item"><a href="#latest-blog" class="nav-link">Articles</a></li>
+                                        <li class="menu-item"><a href="#download-app" class="nav-link">Download App</a></li>
+                                        <!--<li class="menu-item"><a href="https://templatesjungle.gumroad.com/l/booksaw-free-html-bookstore-template" class="nav-link btn btn-outline-dark rounded-pill m-0" target="_blank">Get PRO</a></li>-->
+                                    </ul>
+
+                                    <div class="hamburger">
+                                        <span class="bar"></span>
+                                        <span class="bar"></span>
+                                        <span class="bar"></span>
+                                    </div>
+
+                                </div>
+                            </nav>
+
+                        </div>
+
+                    </div>
+                </div>
+            </header>
+
+        </div><!--header-wrap-->
+
+        <section class="bg-white py-8 antialiased dark:bg-gray-900 md:py-16">
+            <div class="mx-auto max-w-screen-xl px-4 2xl:px-0">
+                <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Shopping Cart</h2>
+
+                <div class="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
+                    <div class="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
+                        <div class="space-y-6" id="cart-Item-Container">
+
+
+                            <div id="cart-Item-Row" class="rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 md:p-6">
+                                <div class="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0">
+                                    <a id="cart-item-a" href="#" class="shrink-0 md:order-1">
+                                        <img  id="cart-item-img" class=" w-24 dark:hidden hover:drop-shadow-xl" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front.svg" alt="imac image" />
+                                    </a>
+
+                                    <label for="counter-input" class="sr-only">Choose quantity:</label>
+                                    <div class="flex items-center justify-between md:order-3 md:justify-end">
+                                        <div class="flex items-center">
+                                            <button type="button" id="decrement-button" data-input-counter-decrement="counter-input" class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                                                <svg class="h-2.5 w-2.5 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
+                                                </svg>
+                                            </button>
+                                            <input type="text" id="cart-item-qty" data-input-counter class="w-10 shrink-0 border-0 bg-transparent text-center text-sm font-medium text-gray-900 focus:outline-none focus:ring-0 dark:text-white" placeholder="" value="2" required />
+                                            <button type="button" id="increment-button" data-input-counter-increment="counter-input" class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md border border-gray-300 bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700">
+                                                <svg class="h-2.5 w-2.5 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                        <div class="text-end md:order-4 md:w-32">
+                                            <p id="cart-item-subtotal" class="text-base font-bold text-gray-900 dark:text-white">$1,499</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="w-full min-w-0 flex-1 space-y-4 md:order-2 md:max-w-md">
+                                        <a id="cart-item-title-a" href="#" class="text-xl text-gray-900 hover:underline dark:text-white font-bold"><span id="cart-item-title">title</span></a>
+                                        <p id="cart-item-price" class="text-base font-bold text-gray-900 dark:text-white">$1,499</p>
+
+                                        <div class="flex items-center gap-4">
+                                            <button type="button" class="inline-flex items-center text-sm font-medium text-gray-500 hover:text-gray-900 hover:underline dark:text-gray-400 dark:hover:text-white">
+                                                <svg class="me-1.5 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z" />
+                                                </svg>
+                                                Add to Favorites
+                                            </button>
+
+                                            <button type="button" class="inline-flex items-center text-sm font-medium text-red-600 hover:underline dark:text-red-500">
+                                                <svg class="me-1.5 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
+                                                </svg>
+                                                Remove
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full" id="order-summary">
+                        <div class="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
+                            <p class="text-xl font-semibold text-gray-900 dark:text-white">Order summary</p>
+
+                            <div class="space-y-4">
+                                <div class="space-y-2">
+                                    <dl class="flex items-center justify-between gap-4">
+                                        <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Original price</dt>
+                                        <dd id="original-total" class="text-base font-medium text-gray-900 dark:text-white">$7,592.00</dd>
+                                    </dl>
+
+                                    <dl class="flex items-center justify-between gap-4">
+                                        <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Total Quantity</dt>
+                                        <dd id="cart-total-qty" class="text-base font-medium text-green-600">-$299.00</dd>
+                                    </dl>
+
+                                    <dl class="flex items-center justify-between gap-4">
+                                        <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Store Pickup</dt>
+                                        <dd class="text-base font-medium text-gray-900 dark:text-white">Rs. 0.00</dd>
+                                    </dl>
+
+                                    <dl class="flex items-center justify-between gap-4">
+                                        <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Tax</dt>
+                                        <dd class="text-base font-medium text-gray-900 dark:text-white">Rs. 0.00</dd>
+                                    </dl>
+                                </div>
+
+                                <dl class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
+                                    <dt class="text-base font-bold text-gray-900 dark:text-white">Total</dt>
+                                    <dd id="cart-total" class="text-base font-bold text-gray-900 dark:text-white">$8,191.00</dd>
+                                </dl>
+                            </div>
+
+                            <a href="checkout.html" class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Proceed to Checkout</a>
+
+                            <div class="flex items-center justify-center gap-2">
+                                <span class="text-sm font-normal text-gray-500 dark:text-gray-400"> or </span>
+                                <a href="index.html" title="" class="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">
+                                    Continue Shopping
+                                    <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6">
+                            <form class="space-y-4">
+                                <div>
+                                    <label for="voucher" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> Do you have a voucher or gift card? </label>
+                                    <input type="text" id="voucher" class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500" placeholder="" required />
+                                </div>
+                                <button type="submit" class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Apply Code</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <footer id="footer">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-4">
+
+                        <div class="footer-item">
+                            <div class="company-brand">
+                                <img src="assets/images/main-logo.png" alt="logo" class="footer-logo">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis sed ptibus liberolectus
+                                    nonet psryroin. Amet sed lorem posuere sit iaculis amet, ac urna. Adipiscing fames
+                                    semper erat ac in suspendisse iaculis.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-2">
+
+                        <div class="footer-menu">
+                            <h5>About Us</h5>
+                            <ul class="menu-list">
+                                <li class="menu-item">
+                                    <a href="#">vision</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">articles </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">careers</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">service terms</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">donate</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-md-2">
+
+                        <div class="footer-menu">
+                            <h5>Discover</h5>
+                            <ul class="menu-list">
+                                <li class="menu-item">
+                                    <a href="#">Home</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Books</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Authors</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Subjects</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Advanced Search</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-md-2">
+
+                        <div class="footer-menu">
+                            <h5>My account</h5>
+                            <ul class="menu-list">
+                                <li class="menu-item">
+                                    <a href="#">Sign In</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">View Cart</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">My Wishtlist</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Track My Order</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                    <div class="col-md-2">
+
+                        <div class="footer-menu">
+                            <h5>Help</h5>
+                            <ul class="menu-list">
+                                <li class="menu-item">
+                                    <a href="#">Help center</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Report a problem</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Suggesting edits</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="#">Contact us</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- / row -->
+
+            </div>
+        </footer>
+
+        <div id="footer-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <div class="copyright">
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <p>© 2022 All rights reserved. Free HTML Template by <a
+                                            href="https://www.templatesjungle.com/" target="_blank">TemplatesJungle</a></p>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="social-links align-right">
+                                        <ul>
+                                            <li>
+                                                <a href="#"><i class="icon icon-facebook"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="icon icon-twitter"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="icon icon-youtube-play"></i></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><i class="icon icon-behance-square"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div><!--grid-->
+
+                    </div><!--footer-bottom-content-->
+                </div>
+            </div>
+        </div>
+
+        <script src="assets/js/jquery-1.11.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script src="assets/js/plugins.js"></script>
+        <script src="assets/js/script.js"></script>
+        <script src="assets/js/cart.js"></script>
+        <script src="assets/js/notification.js"></script>
+        <script src="assets/js/tailwind.config.js"></script>
+        <script src="assets/js/header.js"></script>
+
+    </body>
+</html>
